@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
+import { ProductService } from "./products/product.service";
 
 
 
 @Component({
   selector:'pm-root',
-  template:`<div><h1>{{pageTitle}}</h1><div>My First Component</div>
-  <pm-products></pm-products>
-  </div>`
+  templateUrl:'./app.component.html',
+  providers:[ProductService]
 })
 export class AppComponent{
   pageTitle:string='Product Management';
