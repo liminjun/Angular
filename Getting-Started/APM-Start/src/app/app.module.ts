@@ -2,39 +2,40 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './products/product-list.component';
-import { CovertToSpacesPipe } from './shared/convert-to-spaces.pipe';
+
 import { FormsModule } from '@angular/forms';
-import { StarComponent } from './shared/star.component';
+
 import { HttpClientModule } from '@angular/common/http'
 
-import {ProductDetailComponent} from './products/product-detail.component';
 import { WelcomeComponent } from './home/welcome.component';
 import {RouterModule} from '@angular/router';
+import { AboutComponent } from './about/about.component';
+import { ProductModule } from './products/product.module';
+import { ProductService } from './products/product.service';
+import { ProductGuardService } from './products/product-guard.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent,
-    CovertToSpacesPipe,
-    StarComponent,
-    ProductDetailComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+ 
     HttpClientModule,
     RouterModule.forRoot([
-      {path:'products',component:ProductListComponent},
-      {path:'products/:id',component:ProductDetailComponent},
+     
       {path:'welcome',component:WelcomeComponent},
+      {path:'about',component:AboutComponent},
       {path:'',redirectTo:'welcome',pathMatch:'full'},
       {path:'**',redirectTo:'welcome',pathMatch:'full'}
-    ])
+    ]),
+    
+    ProductModule
   ],
-  providers: [],
+  providers:[ProductGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
