@@ -1,10 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
   </h1>
   <img width="100" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
+</div> -->
 
 <div class="container">
   <header>Angular2 Forms</header>
@@ -16,38 +16,42 @@
   <form  ngForm novalidate>
     <div class="form-group">
       <label for="">First Name</label>
-      <input type="text" class="form-control" required name="firstName" [(ngModel)]="firstName">
+      <input type="text" class="form-control" required name="firstName" [ngModel]="model.firstName"
+      (ngModelChange)="firstNameToUpperCase($event)"
+      >
     </div>
     <div class="form-group">
       <label for="">Last Name</label>
-      <input type="text" class="form-control" required name="lastName" [(ngModel)]="lastName">
+      <input type="text" class="form-control" required name="lastName" [(ngModel)]="model.lastName">
     </div>
 
     <div class="form-check">
       <label class="form-check-label" for="">
-        <input class="form-check-input" type="checkbox" name="is-fullname" [(ngModel)]="isFullTime" id="">Full Time Employee
+        <input class="form-check-input" type="checkbox" name="is-fullname" [(ngModel)]="model.isFullTime" id="">Full Time Employee
       </label>
     </div>
 
-
+    <label for="">Payment Type:</label>
     <div class="form-check">
       <label class="form-check-label" for="" >
-        <input class="form-check-input" type="radio" name="pay-type" value="w2">
-        W2
+        <input class="form-check-input" type="radio" name="paymentType" value="1000" [(ngModel)]="model.paymentType">
+        1000
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label" for="" >
+        <input class="form-check-input" type="radio" name="paymentType" value="2000" [(ngModel)]="model.paymentType">
+        2000
       </label>
     </div>
 
-    <div class="form-check">
-      <input type="radio" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
 
     <div class="form-group">
       <label for="">Primary Language</label>
-      <select name="" id="" class="form-control">
-        <option value="">English</option>
-        <option value="">Chinese</option>
-        <option value="">Other</option>
+      <select name="primaryLanguage" [(ngModel)]="model.primaryLanguage" id="" class="form-control" >
+        <option value="english">English</option>
+        <option value="chinese">Chinese</option>
+        <option value="other">Other</option>
       </select>
     </div>
     <div class="form-group">
@@ -63,6 +67,7 @@
     <button class="btn btn-primary" type="submit">Submit</button>
 
   </form>
+  Model:{{model|json}}
 </div>
-{{form.pristine}}
+Form Value:{{form|json}}
 
