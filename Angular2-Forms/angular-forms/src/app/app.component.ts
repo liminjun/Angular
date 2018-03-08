@@ -12,13 +12,21 @@ import { Employee } from './models/employee.model';
 })
 export class AppComponent {
   title = 'app';
-  model=new Employee('Lee','Li',true,"1000",'english');
+  model=new Employee('Lee','Li',true,"1000",'default');
+  hasPirmaryLanguageError=false;
 
   firstNameToUpperCase(value:string){
     if(value.length>0){
       this.model.firstName=value.charAt(0).toUpperCase()+value.slice(1);
     }else{
       this.model.firstName=value;
+    }
+  }
+  validatePrimaryLanguage(value){
+    if(this.model.primaryLanguage==='default'){
+      this.hasPirmaryLanguageError=true;
+    }else{
+      this.hasPirmaryLanguageError=false;
     }
   }
 }
