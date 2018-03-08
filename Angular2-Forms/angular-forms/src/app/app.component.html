@@ -13,7 +13,7 @@
     <button type="submit">Ok</button>
   </form> -->
 
-  <form  #form="ngForm" novalidate>
+  <form  #form="ngForm" novalidate (submit)="submitForm(form)">
     <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
       <label class="control-label" for="">First Name</label>
       <input #firstName="ngModel" type="text" required  class="form-control" required name="firstName" [ngModel]="model.firstName"

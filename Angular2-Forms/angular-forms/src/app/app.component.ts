@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import { Employee } from './models/employee.model';
+import { FormPoster } from './services/form-poster.service';
 
 
 
@@ -15,6 +16,12 @@ export class AppComponent {
   model=new Employee('Lee','Li',true,"1000",'default');
   hasPirmaryLanguageError=false;
 
+  constructor(private formPoster:FormPoster){
+
+  }
+  submitForm(form:NgForm){
+    console.log(this.model);
+  }
   firstNameToUpperCase(value:string){
     if(value.length>0){
       this.model.firstName=value.charAt(0).toUpperCase()+value.slice(1);
