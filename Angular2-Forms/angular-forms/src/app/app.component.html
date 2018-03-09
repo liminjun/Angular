@@ -59,9 +59,12 @@
       (blur)="validatePrimaryLanguage(primaryLanguage.value)"
       >
         <option value="default" default>Select a language</option>
-        <option value="english">English</option>
+        <option value="{{language}}" *ngFor="let language of languages">
+          {{language}}
+        </option>
+        <!-- <option value="english">English</option>
         <option value="chinese">Chinese</option>
-        <option value="other">Other</option>
+        <option value="other">Other</option> -->
       </select>
     </div>
   

@@ -15,12 +15,17 @@ export class AppComponent {
   title = 'app';
   model = new Employee('Lee', 'Li', true, "1000", 'default');
   hasPirmaryLanguageError = false;
+  languages=[];
 
   constructor(private formPoster: FormPoster) {
-
+    this.formPoster.getLanguages()
+    .subscribe(
+      data=>this.languages=data.languages,
+      error=>console.log('error',error)
+    );
   }
   submitForm(form: NgForm) {
-    debugger;
+    
     this.validatePrimaryLanguage(this.model.primaryLanguage);
     if (this.hasPirmaryLanguageError)
       return;
