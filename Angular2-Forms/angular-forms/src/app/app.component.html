@@ -12,19 +12,38 @@
     <input type="text" placeholder="Name">
     <button type="submit">Ok</button>
   </form> -->
+  <div class="row">
+    <div class="col-xs-12 col-12 col-md-4 form-group">
+      <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="bsValue">
+    </div>
+  </div>
 
-  <form  #form="ngForm" novalidate (submit)="submitForm(form)">
+  <div class="row">
+    <timepicker [(ngModel)]="mytime"></timepicker>
+    <pre class="alert alert-info">Time is: {{mytime}}</pre>
+  </div>
+  <div class="row">
+    <button type="button" class="btn" [class.btn-primary]="onOffSwitch==='On'" [(ngModel)]="onOffSwitch" btnCheckbox btnCheckboxTrue="On" btnCheckboxFalse="Off">
+      {{onOffSwitch}}
+    </button>
+  </div>
+  <div class="row">
+    <!-- <label for="">Rating Control.</label> -->
+    <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"></rating>
+  </div>
+
+
+  <form #form="ngForm" novalidate (submit)="submitForm(form)">
     <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
       <label class="control-label" for="">First Name</label>
-      <input #firstName="ngModel" type="text" required  class="form-control" required name="firstName" [ngModel]="model.firstName"
-      (ngModelChange)="firstNameToUpperCase($event)"
-      >
+      <input #firstName="ngModel" type="text" required class="form-control" required name="firstName" [ngModel]="model.firstName"
+        (ngModelChange)="firstNameToUpperCase($event)">
       <div *ngIf="firstName.invalid && firstName.touched" class="alert alert-danger">
         required.
       </div>
     </div>
 
-    
+
 
     <div class="form-group">
       <label for="">Last Name</label>
@@ -39,25 +58,21 @@
 
     <label for="">Payment Type:</label>
     <div class="form-check">
-      <label class="form-check-label" for="" >
-        <input class="form-check-input" type="radio" name="paymentType" value="1000" [(ngModel)]="model.paymentType">
-        1000
+      <label class="form-check-label" for="">
+        <input class="form-check-input" type="radio" name="paymentType" value="1000" [(ngModel)]="model.paymentType"> 1000
       </label>
     </div>
     <div class="form-check">
-      <label class="form-check-label" for="" >
-        <input class="form-check-input" type="radio" name="paymentType" value="2000" [(ngModel)]="model.paymentType">
-        2000
+      <label class="form-check-label" for="">
+        <input class="form-check-input" type="radio" name="paymentType" value="2000" [(ngModel)]="model.paymentType"> 2000
       </label>
     </div>
 
 
     <div class="form-group" [class.has-error]="hasPirmaryLanguageError">
       <label for="" class="control-label">Primary Language</label>
-      <select name="primaryLanguage" #primaryLanguage [(ngModel)]="model.primaryLanguage" id="" class="form-control" 
-      (change)="validatePrimaryLanguage(primaryLanguage.value)"
-      (blur)="validatePrimaryLanguage(primaryLanguage.value)"
-      >
+      <select name="primaryLanguage" #primaryLanguage [(ngModel)]="model.primaryLanguage" id="" class="form-control" (change)="validatePrimaryLanguage(primaryLanguage.value)"
+        (blur)="validatePrimaryLanguage(primaryLanguage.value)">
         <option value="default" default>Select a language</option>
         <option value="{{language}}" *ngFor="let language of languages">
           {{language}}
@@ -67,16 +82,12 @@
         <option value="other">Other</option> -->
       </select>
     </div>
-  
 
 
 
-    <button class="btn btn-primary" type="submit"
-    [disabled]="form.invalid"
-    >Submit</button>
 
-    
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
+
+
   </form>
 </div>
-
-

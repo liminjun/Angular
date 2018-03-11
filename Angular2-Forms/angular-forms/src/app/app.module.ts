@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import { FormPoster } from './services/form-poster.service';
 import { HttpModule } from '@angular/http';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap';
+import { ButtonsModule } from 'ngx-bootstrap';
+import { RatingModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    BsDatepickerModule.forRoot(),
+    TimepickerModule.forRoot(),
+    ButtonsModule.forRoot(),
+    RatingModule.forRoot()
   ],
   providers: [
     FormPoster

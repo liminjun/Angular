@@ -6,6 +6,7 @@ import { FormPoster } from './services/form-poster.service';
 
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,7 +16,21 @@ export class AppComponent {
   title = 'app';
   model = new Employee('Lee', 'Li', true, "1000", 'default');
   hasPirmaryLanguageError = false;
+
+  
   languages=[];
+
+
+  minDate = new Date(2017, 5, 10);
+  maxDate = new Date(2018, 9, 15);
+ 
+  bsValue: Date = new Date();
+  mytime: Date = new Date();
+  onOffSwitch:string="On";
+
+  max: number = 10;
+  rate: number = 7;
+  isReadonly: boolean = true;
 
   constructor(private formPoster: FormPoster) {
     this.formPoster.getLanguages()
